@@ -1,0 +1,30 @@
+---
+cluster:
+  name: c
+  appNamespace: argo
+  project: c-ops
+
+apps:
+  rook-ceph-poc-config:
+    enabled: true
+    name: c-rook-ceph-poc-config
+    namespace: csi-rook-ceph
+    project: c-ops
+    destination:
+      name: c
+    source:
+      repoURL: https://github.com/SJoon99/c-k8s.git
+      path: apps/rook-ceph-poc-config
+      targetRevision: ops
+      releaseName: rook-ceph-poc-config
+    annotations:
+      argocd.argoproj.io/sync-wave: "50"
+    syncPolicy:
+      automated:
+        enabled: true
+        selfHeal: true
+        prune: false
+      syncOptions:
+        - CreateNamespace=false
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
