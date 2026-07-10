@@ -35,6 +35,7 @@ features:
   - org.ulagbulag.io/cni
   - org.ulagbulag.io/csi
   - org.ulagbulag.io/distributed-storage-cluster/ceph
+  - org.ulagbulag.io/omniverse/nucleus
 
 ingress:
   domainName: c.scalex.local
