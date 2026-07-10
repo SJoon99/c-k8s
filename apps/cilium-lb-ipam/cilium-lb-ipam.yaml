@@ -1,0 +1,18 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: c-lb-pool
+  labels:
+    app.kubernetes.io/name: cilium-lb-ipam
+    app.kubernetes.io/part-of: scalex-repo-poc
+    org.ulagbulag.io/cluster: c
+spec:
+  # Keep network/broadcast-style endpoints out of allocation for the /24 pool.
+  allowFirstLastIPs: "No"
+  blocks:
+    - cidr: 10.33.143.0/24
+  # Empty selector means every LoadBalancer Service in c can receive an IP from
+  # this pool unless a narrower pool is added later.
+  serviceSelector:
+    matchLabels: {}
