@@ -5,3 +5,20 @@ hubble:
     enabled: false
   ui:
     enabled: false
+
+# Masquerade traffic that leaves site-c's own network domains. The common
+# Cilium defaults exclude all of 10.0.0.0/8 from SNAT, but site-b's RGW
+# LoadBalancer lives at 10.33.142.0/24 and cannot route site-c Pod CIDRs back.
+ipMasqAgent:
+  config:
+    nonMasqueradeCIDRs:
+      - 10.96.0.0/12 # site-c Pod CIDR
+      - 10.33.201.0/24 # shared node underlay
+      - 10.33.143.0/24 # site-c LoadBalancer pool
+      - 100.64.0.0/10
+      - 192.0.0.0/24
+      - 192.0.2.0/24
+      - 192.88.99.0/24
+      - 198.18.0.0/15
+      - 198.51.100.0/24
+      - 203.0.113.0/24
