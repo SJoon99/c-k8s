@@ -1,0 +1,24 @@
+---
+ciliumLbIpam:
+  pools:
+    - name: c-lb-pool
+      labels:
+        app.kubernetes.io/name: cilium-lb-ipam
+        app.kubernetes.io/part-of: scalex-repo-poc
+        org.ulagbulag.io/cluster: c
+      spec:
+        blocks:
+          - start: 10.33.143.1
+            stop: 10.33.143.254
+        serviceSelector:
+          matchLabels: {}
+  l2AnnouncementPolicies:
+    - name: c-l2-policy
+      labels:
+        app.kubernetes.io/name: cilium-lb-ipam
+        app.kubernetes.io/part-of: scalex-repo-poc
+        org.ulagbulag.io/cluster: c
+      spec:
+        loadBalancerIPs: true
+        serviceSelector:
+          matchLabels: {}
