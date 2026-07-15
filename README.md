@@ -23,6 +23,7 @@ features:
   - org.ulagbulag.io/distributed-storage-cluster/ceph
   - org.ulagbulag.io/distributed-storage-cluster/ceph/provisioning
   - org.ulagbulag.io/omniverse/nucleus
+  - org.ulagbulag.io/workload-namespace
 ```
 
 The POC nodes are labeled `ControlPlane`/`Compute`, so
@@ -32,6 +33,11 @@ For this POC, `rookCeph.useReplicas: false` is set because the available data di
 
 The Cilium patch declares the `10.33.143.0/24` LoadBalancer pool. The Ceph
 provisioning patch keeps the current one-replica post-config explicit.
+
+`patches/workload-namespace/values.yaml` declares
+`Namespace/scalex-rgw-analysis-web` as C Infra state. Federation uses that
+pre-existing namespace for C workloads and does not let Karmada's default
+namespace controller own its lifecycle.
 
 ## Child API endpoint
 
