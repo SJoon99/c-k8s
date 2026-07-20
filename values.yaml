@@ -33,6 +33,7 @@ cluster:
 # the Ceph-backed CSI layer before higher-level PVC consumers.
 features:
   - nvidia.com/gpu
+  - nvidia.com/gpu/dynamic-resource-allocation
   - org.ulagbulag.io/cni
   - org.ulagbulag.io/cni/lb-ipam
   - org.ulagbulag.io/csi
