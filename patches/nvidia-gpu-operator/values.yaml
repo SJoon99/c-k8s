@@ -1,0 +1,27 @@
+---
+# The DGX Spark node already has a working NVIDIA driver. Keep the operator
+# responsible only for the container runtime, device plugin, and discovery.
+driver:
+  enabled: false
+  nvidiaDriverCRD:
+    enabled: false
+
+# These optional virtualization and confidential-computing operands are not
+# required for the initial bare-metal GPU workload path.
+ccManager:
+  enabled: false
+
+kataManager:
+  enabled: false
+
+kataSandboxDevicePlugin:
+  enabled: false
+
+nodeStatusExporter:
+  enabled: false
+
+sandboxDevicePlugin:
+  enabled: false
+
+sandboxWorkloads:
+  enabled: false
