@@ -1,0 +1,29 @@
+# C-cluster override for NVIDIA DRA.
+# GPU Operator is managed separately and is assumed to be installed.
+# Do not store credentials in this file.
+
+nvidiaDriverRoot: /run/nvidia/driver
+gpuResourcesEnabledOverride: true
+allowDefaultNamespace: false
+
+resources:
+  gpus:
+    enabled: true
+  computeDomains:
+    enabled: true
+
+# Keep this reusable across C GPU nodes; do not hard-code a node name.
+kubeletPlugin:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: nvidia.com/gpu.present
+                operator: In
+                values:
+                  - "true"
+              - key: nvidia.com/gpu.workload.config
+                operator: NotIn
+                values:
+                  - vm-passthrough
