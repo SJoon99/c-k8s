@@ -32,6 +32,7 @@ cluster:
 # Day-1 child-cluster storage bootstrap: Cilium/CoreDNS is verified, so enable
 # the Ceph-backed CSI layer before higher-level PVC consumers.
 features:
+  - nvidia.com/gpu
   - org.ulagbulag.io/cni
   - org.ulagbulag.io/cni/lb-ipam
   - org.ulagbulag.io/csi
