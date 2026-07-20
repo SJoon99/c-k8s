@@ -1,0 +1,24 @@
+portal:
+  namespace: omniverse
+  image: 10.34.25.18/omniverse/isaac-twinx:0.1.0
+  imagePullPolicy: IfNotPresent
+  imagePullSecrets:
+    - name: harbor-regcred
+  service:
+    type: LoadBalancer
+    loadBalancerIP: 10.33.143.11
+  writeEnabled: true
+  isaacSimImage: 10.34.25.18/omniverse/isaac-sim:6.0
+  instanceImagePullSecrets: harbor-regcred
+  dra:
+    apiVersion: resource.k8s.io/v1
+    driver: gpu.nvidia.com
+    deviceClass: gpu.nvidia.com
+    migDeviceClass: mig.nvidia.com
+  nucleus:
+    server: omniverse://10.33.143.10/
+    projectPath: Projects/demonstration
+    secretName: nucleus-cred
+    userKey: OMNI_USER
+    passwordKey: OMNI_PASS
+  streamInitializationSeconds: 120
