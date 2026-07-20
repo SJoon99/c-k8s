@@ -2,7 +2,7 @@
 # GPU Operator is managed separately and is assumed to be installed.
 # Do not store credentials in this file.
 
-nvidiaDriverRoot: /run/nvidia/driver
+nvidiaDriverRoot: /
 gpuResourcesEnabledOverride: true
 allowDefaultNamespace: false
 
