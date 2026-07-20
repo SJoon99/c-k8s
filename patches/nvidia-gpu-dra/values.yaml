@@ -1,3 +1,5 @@
+nameOverride: nvidia-dra-driver-gpu
+
 # C-cluster override for NVIDIA DRA.
 # GPU Operator is managed separately and is assumed to be installed.
 # Do not store credentials in this file.
@@ -10,10 +12,12 @@ resources:
   gpus:
     enabled: true
   computeDomains:
-    enabled: true
+    enabled: false
 
 # Keep this reusable across C GPU nodes; do not hard-code a node name.
 kubeletPlugin:
+  nodeSelector:
+    nvidia.com/gpu.present: "true"
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
