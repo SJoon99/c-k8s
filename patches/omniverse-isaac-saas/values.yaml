@@ -4,11 +4,16 @@ portal:
   imagePullPolicy: IfNotPresent
   imagePullSecrets:
     - name: harbor-regcred
+  nodeSelector:
+    kubernetes.io/arch: amd64
   service:
     type: LoadBalancer
     loadBalancerIP: 10.33.143.11
   writeEnabled: true
   isaacSimImage: 10.34.25.18/omniverse/isaac-sim:6.0
+  isaacSimArm64Image: 10.34.25.18/omniverse/isaac-sim:6.0-arm64
+  isaacSimStartXvfb: true
+  isaacSimArm64StartXvfb: false
   instanceImagePullSecrets: harbor-regcred
   dra:
     apiVersion: resource.k8s.io/v1
@@ -22,3 +27,7 @@ portal:
     userKey: OMNI_USER
     passwordKey: OMNI_PASS
   streamInitializationSeconds: 120
+  probes:
+    readinessTimeoutSeconds: 5
+    livenessTimeoutSeconds: 5
+    livenessFailureThreshold: 6
