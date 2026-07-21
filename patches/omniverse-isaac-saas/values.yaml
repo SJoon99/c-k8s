@@ -11,7 +11,7 @@ portal:
     loadBalancerIP: 10.33.143.11
   writeEnabled: true
   isaacSimImage: 10.34.25.18/omniverse/isaac-sim:6.0
-  isaacSimArm64Image: 10.34.25.18/omniverse/isaac-sim:6.0-arm64
+  isaacSimArm64Image: 10.34.25.18/omniverse/isaac-sim:6.0.1-arm64
   isaacSimStartXvfb: true
   isaacSimArm64StartXvfb: false
   instanceImagePullSecrets: harbor-regcred
