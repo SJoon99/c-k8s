@@ -1,6 +1,6 @@
 portal:
   namespace: omniverse
-  image: 10.34.25.18/omniverse/isaac-twinx:0.2.1
+  image: 10.34.25.18/omniverse/isaac-twinx:0.2.2
   imagePullPolicy: IfNotPresent
   imagePullSecrets:
     - name: harbor-regcred
@@ -14,6 +14,7 @@ portal:
   isaacSimArm64Image: 10.34.25.18/omniverse/isaac-sim:6.0.1-arm64
   isaacSimStartXvfb: true
   isaacSimArm64StartXvfb: false
+  isaacSimArm64HostNetwork: true
   instanceImagePullSecrets: harbor-regcred
   dra:
     apiVersion: resource.k8s.io/v1
