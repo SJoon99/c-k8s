@@ -7,6 +7,7 @@ portal:
     - name: harbor-regcred
   nodeSelector:
     kubernetes.io/arch: amd64
+    kubernetes.io/hostname: 5196561c-de8e-e711-ab21-a4bf01269009
   service:
     type: LoadBalancer
     loadBalancerIP: 10.33.143.11
