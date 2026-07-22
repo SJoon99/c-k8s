@@ -1,4 +1,5 @@
 portal:
+  deploymentName: isaac-portal
   namespace: omniverse
   image: 10.34.25.18/omniverse/isaac-twinx:0.2.2
   imagePullPolicy: IfNotPresent
