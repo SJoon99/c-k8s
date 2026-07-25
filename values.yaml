@@ -61,6 +61,12 @@ repo:
   name: eecs-k8s
   revision: main
 
+clusterRepository:
+  baseUrl: https://github.com
+  owner: SmartX-Team
+  name: c-k8s
+  revision: main
+
 # Tower Argo is the only GitOps control plane for this POC stage.
 tower:
   cluster: tower
